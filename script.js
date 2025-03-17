@@ -16,12 +16,10 @@ dropzone.addEventListener("mouseout", () => {
 dropzone.addEventListener("dragover", (event) => {
 
     event.preventDefault();
-    dropzone.classList.add("dragover");
     dropzone.classList.add("mouseon");
 });
 
-dropzone.addEventListener("dragleave", (event) => {
-    dropzone.classList.remove("dragover");
+dropzone.addEventListener("dragleave", () => {
     dropzone.classList.remove("mouseon")
 });
 
@@ -34,4 +32,3 @@ dropzone.addEventListener("drop", (event) => {
         alert("Only one file can be process at time")
     }
 });
-
