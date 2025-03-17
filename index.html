@@ -2,22 +2,20 @@
 <html>
 
 <head>
-    <title>Home</title>
+    <title>Drag and drop</title>
     <link rel="stylesheet" type="text/css" href="style.css">
-    <link rel="script" type="text/javascript" href="script.js">
+    
 </head>
 
 <body>
     <div class="container">
-        <div class="header">
-            <h1>Home Page</h1>
-        </div>
-        <div class="content">
-            <div id="drop-zone" ondrop="dropHandler(event);" ondragover="dragOverHandler(event);">
-                <p>Drop files <i>here</i></p>
-            </div>
+        <h1>Drag and Drop Video and get your transcription</h1>
+        <div id="drop-zone">
+            <p>Drop files <i>here</i></p>
+            <input type="file" id="fileElem" accept="video/*">
         </div>
     </div>
+    <script src="script.js"></script>
 </body>
 
 </html>

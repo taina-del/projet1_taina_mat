@@ -1,19 +1,37 @@
-function dropHandler(event) {
-    console.log("drop");
-    event.preventDefault();
-    if (event.dataTransfer.items) {
-        for (let i = 0; i < event.dataTransfer.items.length; i++) {
-            if (event.dataTransfer.items[i].kind === "file") {
-                const file = event.dataTransfer.items[i].getAsFile();
-                console.log(file);
-            } else {
-                console.log("not a file");
-            }
-        }
-    }
-}
+const dropzone = document.getElementById("drop-zone");
+const fileInput = document.getElementById("fileElem");
 
-function dragOverHandler(event) {
-    console.log("drag over");
+dropzone.addEventListener("click", () => {
+    fileInput.click();
+});
+
+dropzone.addEventListener("mouseover", () => {
+    dropzone.classList.add("mouseon");
+});
+
+dropzone.addEventListener("mouseout", () => {
+    dropzone.classList.remove("mouseon")
+});
+
+dropzone.addEventListener("dragover", (event) => {
+
     event.preventDefault();
-}
+    dropzone.classList.add("dragover");
+    dropzone.classList.add("mouseon");
+});
+
+dropzone.addEventListener("dragleave", (event) => {
+    dropzone.classList.remove("dragover");
+    dropzone.classList.remove("mouseon")
+});
+
+dropzone.addEventListener("drop", (event) => {
+    event.preventDefault();
+    const file = event.dataTransfer.files;
+    if (file.length == 1) {
+        alert(`File download ${file[0].name}`);
+    }else{
+        alert("Only one file can be process at time")
+    }
+});
+

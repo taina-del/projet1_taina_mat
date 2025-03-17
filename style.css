@@ -6,8 +6,36 @@
     padding: 0;
 }
 
-content #drop_zone {
-    border: 5px solid blue;
-    width: 200px;
-    height: 100px;
-  }
+.container h1 {
+    display : flex;
+    justify-content : center;
+    align-items : center; 
+
+}
+
+#drop-zone {
+    width: 100%;
+    max-width: 400px;
+    height: 200px;
+    border: 2px dashed #007bff;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    color: #007bff;
+    margin: 20px auto;
+    padding: 20px;
+    transition: background-color 0.3s ease;
+}
+
+#drop-zone.mouseon {
+    border-color : red;
+    color : red;
+    cursor : pointer;
+}
+
+#fileElem {
+    display : none;
+}
