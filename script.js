@@ -1,5 +1,8 @@
 const dropzone = document.getElementById("drop-zone");
 const fileInput = document.getElementById("fileElem");
+const transcriptionzone = document.getElementById("transcription");
+const bttonSubmit = document.getElementById("submit");
+let DropFile = null;
 
 dropzone.addEventListener("click", () => {
     fileInput.click();
@@ -25,10 +28,31 @@ dropzone.addEventListener("dragleave", () => {
 
 dropzone.addEventListener("drop", (event) => {
     event.preventDefault();
-    const file = event.dataTransfer.files;
-    if (file.length == 1) {
-        alert(`File download ${file[0].name}`);
-    }else{
+    DropFile = event.dataTransfer.files;
+    if (DropFile.length == 1) {
+        alert(`File download ${DropFile[0].name}`);
+    } else {
         alert("Only one file can be process at time")
+    }
+});
+
+bttonSubmit.addEventListener("click", async () => {
+    if (DropFile == Null) {
+        alert("Please drop a file first")
+    } else {
+        const sendData = new FormData();
+        sendData.append("file", DropFile);
+
+        try {
+            const response = await fetch("http://localhost:3000/upload", {
+                method: "POST",
+                body: formData,
+            });
+
+            const result = await response.json();
+            transcriptionResult.innerText = result.transcription || "Error transcribing file.";
+        } catch (error) {
+            console.error("Upload error:", error);
+        }
     }
 });
